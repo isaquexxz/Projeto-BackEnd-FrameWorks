@@ -53,4 +53,34 @@ public class AlunoDAO {
         }
     }
 
+    public void updateDatabase (Aluno aluno, int id) throws SQLException {
+            String sql = "INSERT INTO aluno (primeiro_nome, ultimo_nome, nascimento) VALUES (?, ?, ?);";
+            System.out.println(sql);
+
+            try {
+                Connection conn = Conexao.abrirConexao();
+                PreparedStatement stmt = conn.prepareStatement(sql);
+
+                // Preenchendo os novos dados
+                stmt.setString(1, aluno.getPrimeiroNome());
+                stmt.setString(2, aluno.getUltimoNome());
+                stmt.setString(3, aluno.getDataDeNascimento());
+
+                // Preenchendo o ID
+                stmt.setInt(4, id);
+
+                int linhasAfetadas = stmt.executeUpdate();
+
+                if (linhasAfetadas > 0) {
+                    System.out.println("Aluno atualizado com sucesso!");
+                } else {
+                    System.out.println("Nenhum aluno encontrado com o ID: " + id);
+                }
+
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+    }
+
 }

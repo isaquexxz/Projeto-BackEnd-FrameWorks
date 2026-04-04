@@ -2,9 +2,11 @@ package database;
 
 import model.Aluno;
 
+import java.sql.SQLException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         Conexao conexao = new Conexao();
         conexao.testarConexao();
@@ -26,8 +28,9 @@ public class Main {
         // Listar todos os alunos
         System.out.println("Lista de alunos:");
         alunoDAO.listarAlunos();
-
-
+        // Update de alunos
+        Aluno newAluno = new Aluno("isaque", "pereira", "22/03/2005");
+        alunoDAO.updateDatabase(newAluno, 1);
     }
 }
 
