@@ -18,6 +18,7 @@ public class Conexao {
             conn = DriverManager.getConnection(URL,USUARIO, SENHA);
             System.out.println("Conexão realizada com sucesso.");
             conn.close();
+            System.out.println("Conexão fechada.");
         } catch (ClassNotFoundException e) {
             System.err.println("Driver JDBC não encontrado");
             e.printStackTrace();
@@ -34,6 +35,7 @@ public class Conexao {
     public static void fecharConexao() throws ClassNotFoundException {
         try {
             conn.close();
+            System.out.println("Conexão fechada.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
