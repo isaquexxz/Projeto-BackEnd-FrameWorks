@@ -21,6 +21,7 @@ public class Conexao {
             System.out.println("Conexão fechada.");
         } catch (ClassNotFoundException e) {
             System.err.println("Driver JDBC não encontrado");
+            System.out.println("Tente novamente mais tarde.");
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -82,5 +82,31 @@ public class AlunoDAO {
                 e.printStackTrace();
             }
     }
+    public void deleteAlunoDataBase(int id) {
+        // Comando SQL para deletar usando a chave primária
+        String sql = "DELETE FROM aluno WHERE id = ?;";
+        System.out.println(sql);
 
+        try {
+            Connection conn = Conexao.abrirConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            // Substitui o '?' pelo id passado como parâmetro
+            stmt.setInt(1, id);
+
+            // executeUpdate() retorna o número de linhas que foram alteradas no banco
+            int linhasAfetadas = stmt.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                System.out.println("Aluno deletado com sucesso!");
+            } else {
+                System.out.println("Nenhum aluno encontrado com o ID informado.");
+            }
+
+            conn.close();
+        } catch (SQLException e) {
+            System.err.println("Erro ao tentar deletar o aluno:");
+            e.printStackTrace();
+        }
+    }
 }

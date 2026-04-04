@@ -30,7 +30,10 @@ public class Main {
         alunoDAO.listarAlunos();
         // Update de alunos
         Aluno newAluno = new Aluno("isaque", "pereira", "22/03/2005");
-        alunoDAO.updateDatabase(newAluno, 1);
+        alunoDAO.updateDatabase(newAluno, 2);
+
+        //Deletar alunos
+        alunoDAO.deleteAlunoDataBase(3);
     }
 }
 
