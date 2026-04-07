@@ -1,6 +1,6 @@
 package database;
 
-import model.Aluno;
+import model.Carro;
 
 import java.sql.SQLException;
 
@@ -12,28 +12,28 @@ public class Main {
         conexao.testarConexao();
 
 
-        AlunoDAO alunoDAO = new AlunoDAO();
+        CarroDAO carroDAO = new CarroDAO();
 
-        // Adicionar um aluno
-        Aluno novoAluno = new Aluno(1,"Zé", "Silva", "15/05/2000");
-        alunoDAO.adicionarAluno(novoAluno);
+        // Adicionar um carro
+        Carro novoCarro = new Carro(1,"Uno", "20000", "2010");
+        carroDAO.adicionarCarro(novoCarro);
 
-        novoAluno = new Aluno(2,"Ana","do Carmo","20/02/2000");
-        alunoDAO.adicionarAluno(novoAluno);
+        novoCarro = new Carro(2,"Corsa","16000","2004");
+        carroDAO.adicionarCarro(novoCarro);
 
-        novoAluno = new Aluno(3,"José","Guimarães","01/02/1998");
-        alunoDAO.adicionarAluno(novoAluno);
+        novoCarro = new Carro(3,"Palio","12000","2003");
+        carroDAO.adicionarCarro(novoCarro);
 
 
-        // Listar todos os alunos
-        System.out.println("Lista de alunos:");
-        alunoDAO.listarAlunos();
-        // Update de alunos
-        Aluno newAluno = new Aluno(1, "isaque", "pereira", "22/03/2005");
-        alunoDAO.updateDatabase(newAluno, 1);
+        // Listar todos os carros
+        System.out.println("Lista de carros:");
+        carroDAO.listarCarros();
+        // Update de carro
+        Carro newCarro = new Carro(1, "Celta", "14000", "2006");
+        carroDAO.updateCarro(newCarro, 1);
 
-        //Deletar alunos
-        alunoDAO.deleteAlunoDataBase(2);
+        //Deletar carro
+        carroDAO.deleteCarro(2);
     }
 }
 
