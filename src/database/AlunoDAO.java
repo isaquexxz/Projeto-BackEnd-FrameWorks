@@ -14,14 +14,15 @@ public class AlunoDAO {
     ArrayList<Aluno> alunos = new ArrayList<>();
 
     public void adicionarAluno(Aluno aluno) {
-        String sql = "INSERT INTO aluno (primeiro_nome, ultimo_nome, nascimento) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO aluno (id, primeiro_nome, ultimo_nome, nascimento) VALUES (?, ?, ?, ?);";
         System.out.println(sql);
         try {
             Connection conn = Conexao.abrirConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, aluno.getPrimeiroNome());
-            stmt.setString(2, aluno.getUltimoNome());
-            stmt.setString(3, aluno.getDataDeNascimento());
+            stmt.setInt(1, aluno.getId());
+            stmt.setString(2, aluno.getPrimeiroNome());
+            stmt.setString(3, aluno.getUltimoNome());
+            stmt.setString(4, aluno.getDataDeNascimento());
             stmt.executeUpdate();
             System.out.println("Aluno adicionado com sucesso!");
             conn.close();
@@ -38,7 +39,7 @@ public class AlunoDAO {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                Aluno aluno = new Aluno(rs.getString("primeiro_nome"),rs.getString("ultimo_nome"),rs.getString("nascimento"));
+                Aluno aluno = new Aluno(rs.getInt("id"), rs.getString("primeiro_nome"),rs.getString("ultimo_nome"),rs.getString("nascimento"));
                 alunos.add(aluno);
             }
             conn.close();
@@ -47,40 +48,38 @@ public class AlunoDAO {
         }
 
         for(int i = 0; i < alunos.size(); i++) {
+            System.out.println("id do aluno:"+alunos.get(i).getId());
             System.out.println("Primeiro nome do aluno: "+alunos.get(i).getPrimeiroNome());
             System.out.println("Último nome do aluno: "+alunos.get(i).getUltimoNome());
             System.out.println("Data de Nascimento: "+alunos.get(i).getDataDeNascimento()+"\n");
         }
     }
 
-    public void updateDatabase (Aluno aluno, int id) throws SQLException {
-            String sql = "INSERT INTO aluno (primeiro_nome, ultimo_nome, nascimento) VALUES (?, ?, ?);";
-            System.out.println(sql);
+    public void updateDatabase(Aluno aluno, int id) {
+        // O erro costuma ser colocar parênteses aqui igual no INSERT.
+        // O CORRETO É ASSIM:
+        String sql = "UPDATE aluno SET primeiro_nome = ?, ultimo_nome = ?, nascimento = ? WHERE id = ?;";
 
-            try {
-                Connection conn = Conexao.abrirConexao();
-                PreparedStatement stmt = conn.prepareStatement(sql);
+        System.out.println("Executando: " + sql); // Isso ajuda a ver o erro no console
 
-                // Preenchendo os novos dados
-                stmt.setString(1, aluno.getPrimeiroNome());
-                stmt.setString(2, aluno.getUltimoNome());
-                stmt.setString(3, aluno.getDataDeNascimento());
+        try (Connection conn = Conexao.abrirConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-                // Preenchendo o ID
-                stmt.setInt(4, id);
+            // 1º ponto de interrogação
+            stmt.setString(1, aluno.getPrimeiroNome());
+            // 2º ponto de interrogação
+            stmt.setString(2, aluno.getUltimoNome());
+            // 3º ponto de interrogação
+            stmt.setString(3, aluno.getDataDeNascimento());
+            // 4º ponto de interrogação (o ID que vai no WHERE)
+            stmt.setInt(4, id);
 
-                int linhasAfetadas = stmt.executeUpdate();
+            stmt.executeUpdate(); // Linha 75
+            System.out.println("Aluno atualizado!");
 
-                if (linhasAfetadas > 0) {
-                    System.out.println("Aluno atualizado com sucesso!");
-                } else {
-                    System.out.println("Nenhum aluno encontrado com o ID: " + id);
-                }
-
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void deleteAlunoDataBase(int id) {
         // Comando SQL para deletar usando a chave primária
