@@ -3,18 +3,30 @@ package model;
 public class Aluno {
 
     //atributos
+    private int id;
     private String primeiroNome;
     private String ultimoNome;
     private String dataDeNascimento;
 
     //Construtor
-    public Aluno(String primeiroNome, String ultimoNome, String dataDeNascimeto) {
+    public Aluno(int id, String primeiroNome, String ultimoNome, String dataDeNascimeto) {
+        this.id = id;
         this.primeiroNome = primeiroNome;
         this.ultimoNome = ultimoNome;
         this.dataDeNascimento = dataDeNascimeto;
     }
 
     //metodos
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getPrimeiroNome() {
         return primeiroNome;
     }

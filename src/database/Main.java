@@ -15,13 +15,13 @@ public class Main {
         AlunoDAO alunoDAO = new AlunoDAO();
 
         // Adicionar um aluno
-        Aluno novoAluno = new Aluno("Zé", "Silva", "15/05/2000");
+        Aluno novoAluno = new Aluno(1,"Zé", "Silva", "15/05/2000");
         alunoDAO.adicionarAluno(novoAluno);
 
-        novoAluno = new Aluno("Ana","do Carmo","20/02/2000");
+        novoAluno = new Aluno(2,"Ana","do Carmo","20/02/2000");
         alunoDAO.adicionarAluno(novoAluno);
 
-        novoAluno = new Aluno("José","Guimarães","01/02/1998");
+        novoAluno = new Aluno(3,"José","Guimarães","01/02/1998");
         alunoDAO.adicionarAluno(novoAluno);
 
 
@@ -29,11 +29,11 @@ public class Main {
         System.out.println("Lista de alunos:");
         alunoDAO.listarAlunos();
         // Update de alunos
-        Aluno newAluno = new Aluno("isaque", "pereira", "22/03/2005");
-        alunoDAO.updateDatabase(newAluno, 2);
+        Aluno newAluno = new Aluno(1, "isaque", "pereira", "22/03/2005");
+        alunoDAO.updateDatabase(newAluno, 1);
 
         //Deletar alunos
-        alunoDAO.deleteAlunoDataBase(3);
+        alunoDAO.deleteAlunoDataBase(2);
     }
 }
 
