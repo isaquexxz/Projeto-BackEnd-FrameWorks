@@ -15,13 +15,13 @@ public class Main {
         CarroDAO carroDAO = new CarroDAO();
 
         // Adicionar um carro
-        Carro novoCarro = new Carro(1,"Uno", "20000", "2010");
+        Carro novoCarro = new Carro(1,"Uno", "R$20.000,00", "2010");
         carroDAO.adicionarCarro(novoCarro);
 
-        novoCarro = new Carro(2,"Corsa","16000","2004");
+        novoCarro = new Carro(2,"Corsa","R$16.000,00","2004");
         carroDAO.adicionarCarro(novoCarro);
 
-        novoCarro = new Carro(3,"Palio","12000","2003");
+        novoCarro = new Carro(3,"Palio","R$12.000,00","2003");
         carroDAO.adicionarCarro(novoCarro);
 
 
@@ -29,7 +29,7 @@ public class Main {
         System.out.println("Lista de carros:");
         carroDAO.listarCarros();
         // Update de carro
-        Carro newCarro = new Carro(1, "Celta", "14000", "2006");
+        Carro newCarro = new Carro(1, "Celta", "R$14.000,00", "2006");
         carroDAO.updateCarro(newCarro, 1);
 
         //Deletar carro
