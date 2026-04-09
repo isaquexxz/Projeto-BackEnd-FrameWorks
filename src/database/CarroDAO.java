@@ -56,11 +56,10 @@ public class CarroDAO {
     }
 
     public void updateCarro(Carro carro, int id) {
-        // O erro costuma ser colocar parênteses aqui igual no INSERT.
-        // O CORRETO É ASSIM:
+
         String sql = "UPDATE carro SET nome_carro = ?, valor_carro = ?, ano_carro = ? WHERE id = ?;";
 
-        System.out.println("Executando: " + sql); // Isso ajuda a ver o erro no console
+        System.out.println("Executando: " + sql); //
 
         try (Connection conn = Conexao.abrirConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

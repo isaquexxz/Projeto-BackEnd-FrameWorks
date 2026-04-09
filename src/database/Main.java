@@ -11,7 +11,6 @@ public class Main {
         Conexao conexao = new Conexao();
         conexao.testarConexao();
 
-
         CarroDAO carroDAO = new CarroDAO();
 
         // Adicionar um carro
@@ -23,7 +22,6 @@ public class Main {
 
         novoCarro = new Carro(3,"Palio","R$12.000,00","2003");
         carroDAO.adicionarCarro(novoCarro);
-
 
         // Listar todos os carros
         System.out.println("Lista de carros:");
