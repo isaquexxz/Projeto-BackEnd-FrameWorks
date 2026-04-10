@@ -1,6 +1,6 @@
 # Projeto BackEnd Frameworks
 
-Este é um **projeto universitário** desenvolvido pelos alunos **Isaque Ferreira** e **Mauricio Alves**.
+Este é um **projeto universitário do professor: Daniel Marques** desenvolvido pelos alunos **Isaque Ferreira** e **Mauricio Alves**.
 
 ## Sobre o projeto
 O sistema foi criado em **Java** com o objetivo de praticar a integração entre aplicação e banco de dados, utilizando o cadastro de carros como exemplo.
