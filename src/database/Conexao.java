@@ -14,7 +14,7 @@ public class Conexao {
 
     public static void testarConexao() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(URL,USUARIO, SENHA);
             System.out.println("Conexão realizada com sucesso.");
             conn.close();
