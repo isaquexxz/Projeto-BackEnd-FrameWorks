@@ -64,13 +64,9 @@ public class CarroDAO {
         try (Connection conn = Conexao.abrirConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            // 1º ponto de interrogação
             stmt.setString(1, carro.getNomeCarro());
-            // 2º ponto de interrogação
             stmt.setString(2, carro.getValorCarro());
-            // 3º ponto de interrogação
             stmt.setString(3, carro.getAnoCarro());
-            // 4º ponto de interrogação (o ID que vai no WHERE)
             stmt.setInt(4, id);
 
             stmt.executeUpdate(); // Linha 75
@@ -81,7 +77,7 @@ public class CarroDAO {
         }
     }
     public void deleteCarro(int id) {
-        // Comando SQL para deletar usando a chave primária
+        // Comando SQL para deletar
         String sql = "DELETE FROM carro WHERE id = ?;";
         System.out.println(sql);
 
@@ -89,10 +85,8 @@ public class CarroDAO {
             Connection conn = Conexao.abrirConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            // Substitui o '?' pelo id passado como parâmetro
             stmt.setInt(1, id);
 
-            // executeUpdate() retorna o número de linhas que foram alteradas no banco
             int linhasAfetadas = stmt.executeUpdate();
 
             if (linhasAfetadas > 0) {

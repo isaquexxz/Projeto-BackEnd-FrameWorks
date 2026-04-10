@@ -1,5 +1,5 @@
 package database;
-
+//Grupo: Maurício e Isaque
 import model.Carro;
 
 import java.sql.SQLException;
@@ -26,6 +26,7 @@ public class Main {
         // Listar todos os carros
         System.out.println("Lista de carros:");
         carroDAO.listarCarros();
+
         // Update de carro
         Carro newCarro = new Carro(1, "Celta", "R$14.000,00", "2006");
         carroDAO.updateCarro(newCarro, 1);
