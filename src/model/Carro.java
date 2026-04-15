@@ -2,7 +2,7 @@ package model;
 
 public class Carro {
 
-    //atributos
+    //Atributos
     private int id;
     private String nomeCarro;
     private String valorCarro;
@@ -16,9 +16,7 @@ public class Carro {
         this.anoCarro = anoCarro;
     }
 
-    //metodos
-
-
+    //Metodos
     public int getId() {
         return id;
     }

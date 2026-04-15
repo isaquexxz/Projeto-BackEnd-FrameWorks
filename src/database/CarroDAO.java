@@ -13,6 +13,7 @@ public class CarroDAO {
 
     ArrayList<Carro> carros = new ArrayList<>();
 
+    // Função para ADICIONAR carros
     public void adicionarCarro(Carro carro) {
         String sql = "INSERT INTO carro (id, nome_carro, valor_carro, ano_carro) VALUES (?, ?, ?, ?);";
         System.out.println(sql);
@@ -32,8 +33,12 @@ public class CarroDAO {
 
     }
 
+    // Função para LISTAR carros
     public void listarCarros() {
+
         String sql = "SELECT * FROM carro;";
+        System.out.println("Executando: " + sql);
+
         try {
             Connection conn = Conexao.abrirConexao();
             Statement stmt = conn.createStatement();
@@ -54,12 +59,11 @@ public class CarroDAO {
             System.out.println("Ano do carro: "+ carros.get(i).getAnoCarro()+"\n");
         }
     }
-
+    // Função para ATUALIZAR carros
     public void updateCarro(Carro carro, int id) {
 
         String sql = "UPDATE carro SET nome_carro = ?, valor_carro = ?, ano_carro = ? WHERE id = ?;";
-
-        System.out.println("Executando: " + sql); //
+        System.out.println("Executando: " + sql);
 
         try (Connection conn = Conexao.abrirConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -76,10 +80,12 @@ public class CarroDAO {
             e.printStackTrace();
         }
     }
+
+    // Função para DELETAR carros
     public void deleteCarro(int id) {
-        // Comando SQL para deletar
+
         String sql = "DELETE FROM carro WHERE id = ?;";
-        System.out.println(sql);
+        System.out.println("Executando: " + sql);
 
         try {
             Connection conn = Conexao.abrirConexao();
@@ -94,7 +100,6 @@ public class CarroDAO {
             } else {
                 System.out.println("Nenhum carro encontrado com o ID informado.");
             }
-
             conn.close();
         } catch (SQLException e) {
             System.err.println("Erro ao tentar deletar o carro:");
